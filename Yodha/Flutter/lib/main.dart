@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
     ));
 
     return MaterialApp(
+      title: 'Yodha',
       debugShowCheckedModeBanner: false,
       theme: theme,
       home: LaunchScreen(),
