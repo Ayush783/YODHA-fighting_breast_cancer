@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ne_proj/const.dart';
+import 'package:ne_proj/screens/survey_screen.dart';
 import 'package:ne_proj/widgets/base_container.dart';
 import 'package:ne_proj/widgets/call_button.dart';
 import 'package:ne_proj/widgets/spacing.dart';
@@ -72,8 +73,17 @@ class _SurvivorhomeScreenState extends State<SurvivorhomeScreen> {
           WidgetSpacing(
             top: 20,
           ), //SurveyButton
-          BaseContainer(
-            title: 'Take Survey',
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SurveyScreen(),
+                  ));
+            },
+            child: BaseContainer(
+              title: 'Take Survey',
+            ),
           )
         ],
       ),

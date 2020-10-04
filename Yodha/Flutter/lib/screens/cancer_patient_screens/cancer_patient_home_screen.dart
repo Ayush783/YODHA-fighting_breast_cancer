@@ -5,6 +5,8 @@ import 'package:ne_proj/widgets/base_container.dart';
 import 'package:ne_proj/widgets/call_button.dart';
 import 'package:ne_proj/widgets/spacing.dart';
 
+import '../survey_screen.dart';
+
 class CancerPatientHomeScreen extends StatefulWidget {
   @override
   _CancerPatientHomeScreenState createState() =>
@@ -86,8 +88,17 @@ class _CancerPatientHomeScreenState extends State<CancerPatientHomeScreen> {
             top: 20,
           ),
           //SurveyButton
-          BaseContainer(
-            title: 'Take Survey',
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SurveyScreen(),
+                  ));
+            },
+            child: BaseContainer(
+              title: 'Take Survey',
+            ),
           )
         ],
       ),

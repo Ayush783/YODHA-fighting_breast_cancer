@@ -197,3 +197,15 @@ List<Map<String, String>> events = [
     "link": "https://whova.com/portal/registration/mcpsp_202009/"
   },
 ];
+
+List<String> surveyQues = [
+  "Q1.Were you 40 yrs or older before you were diagnosed with cancer?",
+  "Q2.Did you have any genetic changes?",
+  "Q3.Did you undergo Early Menarche? (period before age 12)",
+  "Q4.Did you undergo Late Menopause?",
+  "Q5.Did you have personal history of breast cancer or certain non-cancerous breast diseases?",
+  "Q6.Did you have ovarian cancer?",
+  "Q7.Did you drink alcohol frequently?",
+  "Q8.Were you overweight? (BMI greater than 30)",
+  "Q9.Did you have late first child? (after the age of 30)"
+];
