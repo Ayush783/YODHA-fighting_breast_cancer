@@ -43,7 +43,7 @@ class BottomNavyBar extends StatelessWidget {
         decoration: BoxDecoration(color: bgColor, boxShadow: [
           if (showElevation)
             const BoxShadow(
-              color: Colors.black,
+              color: Color(0xff973961),
               blurRadius: 8,
             )
         ]),

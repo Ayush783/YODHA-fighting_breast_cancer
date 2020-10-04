@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ne_proj/screens/survivor_screens/podcast_screen.dart';
 import 'package:ne_proj/widgets/app_logo.dart';
 import 'package:ne_proj/widgets/base_container.dart';
 import 'package:ne_proj/widgets/next_button.dart';
 import 'package:ne_proj/widgets/spacing.dart';
 
 import '../../const.dart';
+import 'SUrvivor_dashboard.dart';
 
 class SurvivorStageSelectionScreen extends StatefulWidget {
   @override

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ne_proj/widgets/app_bar.dart';
 
-class SurvivorDashboard extends StatefulWidget {
+class PodcastScreen extends StatefulWidget {
   @override
-  _SurvivorDashboardState createState() => _SurvivorDashboardState();
+  _PodcastScreenState createState() => _PodcastScreenState();
 }
 
-class _SurvivorDashboardState extends State<SurvivorDashboard> {
+class _PodcastScreenState extends State<PodcastScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar,
-    );
+    return Container();
   }
 }
