@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ne_proj/const.dart';
 import 'package:ne_proj/data.dart';
+import 'package:ne_proj/services/launch_urls.dart';
 import 'package:ne_proj/widgets/spacing.dart';
 
 class StoriesScreen extends StatefulWidget {
@@ -56,9 +57,15 @@ class _StoriesScreenState extends State<StoriesScreen> {
                 WidgetSpacing(
                   top: 40,
                 ),
-                Text(
-                  'Read full story here',
-                  style: title.copyWith(fontSize: 18),
+                GestureDetector(
+                  onTap: () {
+                    launchURL(stories[index]["link"]);
+                  },
+                  child: Text(
+                    'Read full story here',
+                    style: title.copyWith(
+                        fontSize: 18, decoration: TextDecoration.underline),
+                  ),
                 )
               ],
             ),

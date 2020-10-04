@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ne_proj/const.dart';
+import 'package:ne_proj/services/launch_urls.dart';
 import 'package:ne_proj/widgets/base_container.dart';
 import 'package:ne_proj/widgets/call_button.dart';
 import 'package:ne_proj/widgets/spacing.dart';
@@ -37,7 +38,11 @@ class _CancerPatientHomeScreenState extends State<CancerPatientHomeScreen> {
             top: 45,
           ),
           //call button
-          CallButton(),
+          GestureDetector(
+              onTap: () {
+                launchDialPad('24546542');
+              },
+              child: CallButton()),
           WidgetSpacing(
             top: 35,
           ),

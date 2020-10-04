@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ne_proj/const.dart';
 import 'package:ne_proj/screens/survey_screen.dart';
+import 'package:ne_proj/services/launch_urls.dart';
 import 'package:ne_proj/widgets/base_container.dart';
 import 'package:ne_proj/widgets/call_button.dart';
 import 'package:ne_proj/widgets/spacing.dart';
@@ -50,7 +51,11 @@ class _SurvivorhomeScreenState extends State<SurvivorhomeScreen> {
             top: 20,
           ),
           //call button
-          CallButton(),
+          GestureDetector(
+              onTap: () {
+                launchDialPad('13456443');
+              },
+              child: CallButton()),
           WidgetSpacing(
             top: 25,
           ),

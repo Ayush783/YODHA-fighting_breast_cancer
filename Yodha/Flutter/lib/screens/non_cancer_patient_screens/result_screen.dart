@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ne_proj/const.dart';
+import 'package:ne_proj/services/launch_urls.dart';
 import 'package:ne_proj/widgets/app_bar.dart';
 import 'package:ne_proj/widgets/base_container.dart';
 import 'package:ne_proj/widgets/call_button.dart';
@@ -47,12 +48,21 @@ class ResultScreen extends StatelessWidget {
               top: 35,
             ),
             //call button
-            CallButton(),
+            GestureDetector(
+                onTap: () {
+                  launchDialPad('453456547');
+                },
+                child: CallButton()),
             WidgetSpacing(
               top: 60,
             ),
-            BaseContainer(
-              title: 'Know more about Breast Cancer',
+            GestureDetector(
+              onTap: () {
+                launchURL('https://www.cancer.org/cancer/breast-cancer.html');
+              },
+              child: BaseContainer(
+                title: 'Know more about Breast Cancer',
+              ),
             )
           ],
         ),

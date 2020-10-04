@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ne_proj/data.dart';
+import 'package:ne_proj/services/launch_urls.dart';
 import 'package:ne_proj/widgets/base_container.dart';
 import 'package:ne_proj/widgets/spacing.dart';
 
@@ -32,7 +33,6 @@ class _EventsScreenState extends State<EventsScreen> {
             child: ListView.builder(
               itemCount: events.length,
               itemBuilder: (context, index) {
-                bool isSelected = false;
                 return Container(
                   child: Column(
                     children: [
@@ -64,18 +64,21 @@ class _EventsScreenState extends State<EventsScreen> {
                                   fontWeight: FontWeight.bold, fontSize: 18)),
                           Radio(
                               activeColor: Colors.white,
-                              toggleable: true,
-                              focusColor: Colors.white,
-                              value: isSelected,
-                              groupValue: true,
-                              onChanged: (value) => isSelected = value)
+                              value: 1,
+                              groupValue: 0,
+                              onChanged: (value) {})
                         ],
                       ),
                       WidgetSpacing(
                         top: 20,
                       ),
-                      BaseContainer(
-                        title: 'Register',
+                      GestureDetector(
+                        onTap: () {
+                          launchURL(events[index]["link"]);
+                        },
+                        child: BaseContainer(
+                          title: 'Register',
+                        ),
                       ),
                       WidgetSpacing(
                         top: 20,
