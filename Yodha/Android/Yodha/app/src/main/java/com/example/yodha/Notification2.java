@@ -1,17 +1,20 @@
 package com.example.yodha;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ChemoInfo#newInstance} factory method to
+ * Use the {@link Notification2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChemoInfo extends Fragment {
+public class Notification2 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +25,7 @@ public class ChemoInfo extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ChemoInfo() {
+    public Notification2() {
         // Required empty public constructor
     }
 
@@ -32,11 +35,11 @@ public class ChemoInfo extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ChemoInfo.
+     * @return A new instance of fragment Notification2.
      */
     // TODO: Rename and change types and number of parameters
-    public static ChemoInfo newInstance(String param1, String param2) {
-        ChemoInfo fragment = new ChemoInfo();
+    public static Notification2 newInstance(String param1, String param2) {
+        Notification2 fragment = new Notification2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -57,6 +60,24 @@ public class ChemoInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chemo_info, container, false);
+        View inflator = inflater.inflate(R.layout.fragment_notification2, container, false);
+        Button radth = inflator.findViewById(R.id.survey);
+        Button call = inflator.findViewById(R.id.call);
+        radth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm =getFragmentManager();
+                fm.beginTransaction().replace(R.id.fragment_container,(Fragment)new SurveyFragment()).commit();
+
+            }
+        });
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                startActivity(intent);
+            }
+        });
+        return inflator;
     }
-}
+    }
