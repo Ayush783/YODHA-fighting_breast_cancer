@@ -13,6 +13,7 @@ class RegisterUserWithEmail extends FirebaseEvent {
 
 class UpdateUserStatus extends FirebaseEvent {
   final String status, email;
+  final BuildContext context;
 
-  UpdateUserStatus(this.email, this.status);
+  UpdateUserStatus(this.email, this.status, this.context);
 }

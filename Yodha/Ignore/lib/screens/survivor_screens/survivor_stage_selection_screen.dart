@@ -9,6 +9,9 @@ import '../../const.dart';
 import 'SUrvivor_dashboard.dart';
 
 class SurvivorStageSelectionScreen extends StatefulWidget {
+  final String email;
+
+  const SurvivorStageSelectionScreen({Key key, this.email}) : super(key: key);
   @override
   _SurvivorStageSelectionScreenState createState() =>
       _SurvivorStageSelectionScreenState();

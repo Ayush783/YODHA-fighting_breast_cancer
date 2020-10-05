@@ -7,6 +7,9 @@ import 'package:ne_proj/widgets/next_button.dart';
 import 'package:ne_proj/widgets/spacing.dart';
 
 class SelectStage extends StatefulWidget {
+  final String email;
+
+  const SelectStage({Key key, this.email}) : super(key: key);
   @override
   _SelectStageState createState() => _SelectStageState();
 }

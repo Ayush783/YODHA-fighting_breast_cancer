@@ -7,6 +7,9 @@ import 'package:ne_proj/widgets/spacing.dart';
 import 'package:ne_proj/widgets/yes_no_buttons.dart';
 
 class QuestionScreen extends StatefulWidget {
+  final String email;
+
+  const QuestionScreen({Key key, this.email}) : super(key: key);
   @override
   _QuestionScreenState createState() => _QuestionScreenState();
 }

@@ -33,6 +33,7 @@ flutter:
   assets:
     - images/
     - icons/
+    - animations/
   fonts:
     - family: Sen
       fonts:

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:ne_proj/bloc/firebase_bloc.dart';
-import 'package:ne_proj/const.dart';
-import 'package:ne_proj/widgets/app_logo.dart';
-import 'package:ne_proj/widgets/next_button.dart';
-import 'package:ne_proj/widgets/spacing.dart';
+import 'package:ne_proj/utility.dart';
+import '../bloc/firebase_bloc.dart';
+import '../const.dart';
+import '../widgets/app_logo.dart';
+import '../widgets/next_button.dart';
+import '../widgets/spacing.dart';
 
 class LaunchScreen extends StatefulWidget {
   @override
@@ -29,8 +30,8 @@ class _LaunchScreenState extends State<LaunchScreen> {
 
   Padding buildWidgets(Size size) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(
-          2 * size.width * 0.0555, 100, 2 * size.width * 0.0555, 0),
+      padding: EdgeInsets.fromLTRB(2 * size.width * 0.0555,
+          size.height * 0.1479, 2 * size.width * 0.0555, 0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,43 +39,57 @@ class _LaunchScreenState extends State<LaunchScreen> {
             //app logo
             AppLogo(),
             WidgetSpacing(
-              top: 40,
+              top: size.height * 0.059171,
             ),
             //email textfield
-            buildEmailField(),
+            buildEmailField(size),
             Container(
               height: 2,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(40)),
             ),
-            WidgetSpacing(
-              top: 100,
-            ),
+            WidgetSpacing(top: size.height * 0.1479),
             //checkbox field
-            buildCheckbox(),
+            buildCheckbox(size),
             WidgetSpacing(top: 40),
+            //next button or loading animation
             BlocBuilder<FirebaseBloc, FirebaseState>(
               cubit: bloc,
               builder: (context, state) {
                 if (state is FirebaseInitial) {
                   return NextButton(onTap: () {
-                    bloc.add(RegisterUserWithEmail(email, isSelected, context));
+                    bool a = RegExp(
+                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(email ?? '');
+                    print(email);
+                    print(a);
+                    if (a)
+                      bloc.add(
+                          RegisterUserWithEmail(email, isSelected, context));
+                    else {
+                      Utility.getSnackBar(context: context, text: 'adsfgh');
+                    }
                   });
                 } else {
-                  return Center(
-                      child: Lottie.asset('animations/loaading.json',
-                          height: 30, width: 30));
+                  return Container(
+                    child: Center(
+                        child: Lottie.asset('animations/loading.json',
+                            height: size.height * 0.07395,
+                            width: size.width * 0.13888)),
+                  );
                 }
               },
             ),
-            //Next Button
+            WidgetSpacing(
+              top: 10,
+            )
           ],
         ),
       ),
     );
   }
 
-  Row buildCheckbox() {
+  Row buildCheckbox(Size size) {
     return Row(
       children: [
         InkWell(
@@ -84,8 +99,8 @@ class _LaunchScreenState extends State<LaunchScreen> {
             });
           },
           child: Container(
-            height: 20,
-            width: 20,
+            height: size.width * 0.0555,
+            width: size.width * 0.0555,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(color: Colors.white)),
@@ -93,18 +108,16 @@ class _LaunchScreenState extends State<LaunchScreen> {
               child: isSelected
                   ? Icon(
                       Icons.check,
-                      size: 18.0,
+                      size: size.width * 0.05,
                       color: Colors.white,
                     )
                   : Text(''),
             ),
           ),
         ),
-        WidgetSpacing(
-          right: 25,
-        ),
+        WidgetSpacing(right: size.width * 0.069444),
         Container(
-          width: 220,
+          width: size.width * 0.611111,
           child: Text(
             "Select this if you want us to send articles/stories about breast cancer",
             style: primary.copyWith(fontSize: 14),
@@ -114,9 +127,9 @@ class _LaunchScreenState extends State<LaunchScreen> {
     );
   }
 
-  Padding buildEmailField() {
+  Padding buildEmailField(Size size) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.0555),
       child: TextField(
         onChanged: (value) {
           email = value;
@@ -133,8 +146,8 @@ class _LaunchScreenState extends State<LaunchScreen> {
               padding: EdgeInsets.only(right: 10.0),
               child: SvgPicture.asset(
                 'icons/@.svg',
-                height: 14,
-                width: 14,
+                height: size.width * 0.03888,
+                width: size.width * 0.03888,
               ),
             )),
       ),
