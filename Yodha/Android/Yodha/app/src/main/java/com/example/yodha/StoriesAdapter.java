@@ -28,18 +28,13 @@ public class StoriesAdapter extends ArrayAdapter<Stories> {
         }
         Stories currentAndroidFlavor = getItem(position);
         TextView mTextView = (TextView) listItemView.findViewById(R.id.text1);
-        // Get the version name from the current AndroidFlavor object and
-        // set this text on the name TextView
+        
         mTextView.setText(currentAndroidFlavor.getmText());
         TextView mTextView2 = (TextView) listItemView.findViewById(R.id.text2);
-        // Get the version name from the current AndroidFlavor object and
-        // set this text on the name TextView
+        
         mTextView2.setText(currentAndroidFlavor.getmText2());
-        ImageView iconView =(ImageView) listItemView.findViewById(R.id.image);
-        // Get the image resource ID from the current AndroidFlavor object and
-        // set the image to iconView
-        //if(currentAndroidFlavor.hasImage()) {
-        iconView.setImageResource(currentAndroidFlavor.getmImageresourceid());
+        ImageView imageView =(ImageView) listItemView.findViewById(R.id.image);
+        imageView.setImageResource(currentAndroidFlavor.getmImageresourceid());
         return listItemView;
 
     }
