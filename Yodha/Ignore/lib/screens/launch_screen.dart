@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
-import 'package:ne_proj/utility.dart';
-import '../bloc/firebase_bloc.dart';
 import '../const.dart';
 import '../widgets/app_logo.dart';
-import '../widgets/next_button.dart';
 import '../widgets/spacing.dart';
 
 class LaunchScreen extends StatefulWidget {
@@ -15,8 +10,6 @@ class LaunchScreen extends StatefulWidget {
 }
 
 class _LaunchScreenState extends State<LaunchScreen> {
-  // ignore: close_sinks
-  FirebaseBloc bloc = FirebaseBloc();
   bool isSelected = false;
   String email;
 
@@ -53,33 +46,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
             buildCheckbox(size),
             WidgetSpacing(top: 40),
             //next button or loading animation
-            BlocBuilder<FirebaseBloc, FirebaseState>(
-              cubit: bloc,
-              builder: (context, state) {
-                if (state is FirebaseInitial) {
-                  return NextButton(onTap: () {
-                    bool a = RegExp(
-                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        .hasMatch(email ?? '');
-                    print(email);
-                    print(a);
-                    if (a)
-                      bloc.add(
-                          RegisterUserWithEmail(email, isSelected, context));
-                    else {
-                      Utility.getSnackBar(context: context, text: 'adsfgh');
-                    }
-                  });
-                } else {
-                  return Container(
-                    child: Center(
-                        child: Lottie.asset('animations/loading.json',
-                            height: size.height * 0.07395,
-                            width: size.width * 0.13888)),
-                  );
-                }
-              },
-            ),
+
             WidgetSpacing(
               top: 10,
             )
